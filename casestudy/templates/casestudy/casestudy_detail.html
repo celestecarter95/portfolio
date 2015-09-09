@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>Celeste's Portfolio</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+		<!-- Custom css -->
+		{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'casestudy/styles.css' %}" />
+
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class"navbar-header">
+					<a class="navbar-brand" href="{% url 'casestudy:index' %}">Celeste Carter</a>
+				</div>
+				<div>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Skills</a></li>
+						<li><a href="#">Goals</a></li>
+						<li><a href="#">Education</a></li>
+						<li><a href="#">Personal Interests</a></li>
+						<li><a href="#">Other</a></li>
+					</ul>
+				</div>
+				</div> <!-- container-fluid -->
+			</div>
+		</nav>
+
+		<div class="container details">
+			<h1>{{ casestudy.name }}</h1>
+
+			{% if casestudy.item_set %}
+
+				{% for item in casestudy.item_set.all %}
+
+				<div id="{{ item.id }}">
+					<h2>{{ item.title}}</h2>
+					<img src="/media/{{ item.image }}">
+					<p>{{ item.description }}</p>
+				</div>
+
+				{% endfor %}
+
+			{% endif %}
+		</div> <!-- End of Container -->
+	</body>
+</html>
