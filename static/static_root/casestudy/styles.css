@@ -1,0 +1,16 @@
+body {
+}
+
+a {
+}
+
+.details img {
+	width: 400px;
+	height: 400px;
+	overflow: hidden;
+	float: left;
+}
+
+.details p {
+	font-size: 25px;
+}

@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'casestudy',
+	'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,7 +57,8 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'casestudy', 'templates', 'casestudy')],
+        #'DIRS': [os.path.join(BASE_DIR, 'casestudy', 'templates', 'casestudy')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -101,11 +103,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, "static", "static_root")
-#STATICFILES_DIRS = (
-#    os.path.join(BASE_DIR, "casestudy", "static", "casestudy"),
-#)
+STATIC_ROOT = os.path.join(BASE_DIR, "static", "static_root")
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static_in_pro", "our_static"),
+)
 
 # Adding Media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+THUMBNAIL_DEBUG = True

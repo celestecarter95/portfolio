@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-	{% extends 'base.html' %}
-	{% load thumbnail %}
 
 	<head>
-		<title>Celeste's Portfolio</title>
+		<title>{% block 'title' %} Welcome to Celeste's Portfolio {% endblock %}</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -42,25 +40,8 @@
 		</nav>
 
 	{% block 'content' %}
-		<div class="container details">
-			<h1>{{ casestudy.name }}</h1>
-
-			{% if casestudy.item_set %}
-
-				{% for item in casestudy.item_set.all %}
-
-				<div id="{{ item.id }}">
-					<h2>{{ item.title}}</h2>
-					{% thumbnail item.image "300x300" crop="center" as im  %}
-					<img src="{{ im.url }}">
-					{% endthumbnail %}
-					<p>{{ item.description }}</p>
-				</div>
-
-				{% endfor %}
-
-			{% endif %}
-		</div> <!-- End of Container -->
+		<h1>Welcome to Celeste's Portfolio Site</h1>
+        <p>We hope you enjoy some nice quality time with us today.</p>
 	{% endblock %}
 	</body>
 </html>

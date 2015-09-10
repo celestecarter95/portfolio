@@ -1,18 +1,23 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'casestudy/styles.css' %}" />
 
-{% if casestudy_list %}
-	<ul>
-		{% for study in casestudy_list %}
-		
-		<li><a href="{% url 'casestudy:detail' study.id  %}">{{ study.name }}</a> - {{ study.description }}</li>
+{% block 'title' %} List of Case studies {% endblock %}
 
-		{% endfor %}
-	</ul>
+{% block 'content' %}
+	{% if casestudy_list %}
+		<ul>
+			{% for study in casestudy_list %}
+			
+			<li><a href="{% url 'casestudy:detail' study.id  %}">{{ study.name }}</a> - {{ study.description }}</li>
 
-{% else %}
+			{% endfor %}
+		</ul>
 
-	<p>No case studies to show.</p>
+	{% else %}
 
-{% endif %}
+		<p>No case studies to show.</p>
+
+	{% endif %}
+{% endblock %}
