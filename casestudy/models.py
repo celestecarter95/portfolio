@@ -3,6 +3,7 @@ from django.db import models
 class CaseStudy(models.Model):
     name = models.CharField(max_length="200")
     description = models.TextField()
+    image = models.ImageField(upload_to="items/%Y/%m/%d", blank=True, null=True)
 
     def __unicode__(self):
         return self.name

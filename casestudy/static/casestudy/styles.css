@@ -1,4 +1,11 @@
 body {
+	font-family: 'Bitter', serif;
+	/*background: url(img/gold_marble.jpg) no-repeat center center fixed; */
+	font-size: 20px;
+}
+
+.navbar-brand {
+	font-family: 'Molle', cursive;
 }
 
 a {
