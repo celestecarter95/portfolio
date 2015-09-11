@@ -6,6 +6,7 @@ from .models import CaseStudy, Item
 # Create your views here.
 
 class IndexView(generic.ListView):
+	template_name = 'base.html'
 	template_name = 'casestudy/index.html'
 	model = CaseStudy
 

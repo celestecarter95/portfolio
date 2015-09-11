@@ -30,7 +30,7 @@
 					</div>
 					<div>
 						<ul class="nav navbar-nav navbar-right">
-						{% for casestudy in casestudy_list%}
+						{% for casestudy in casestudy_list %}
 							<li><a href="{% url 'casestudy:detail' casestudy.id %}">{{ casestudy.name }}</a></li>
 						{% endfor %}
 						</ul>
