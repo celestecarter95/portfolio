@@ -23,28 +23,36 @@
 	</head>
 
 	<body>
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class"navbar-header">
+						<a class="navbar-brand" href="{% url 'casestudy:index' %}">Celeste Carter</a>
+					</div>
+					<div>
+						<ul class="nav navbar-nav navbar-right">
+						{% for casestudy in casestudy_list%}
+							<li><a href="{% url 'casestudy:detail' casestudy.id %}">{{ casestudy.name }}</a></li>
+						{% endfor %}
+						</ul>
+					</div>
+					</div> <!-- End of container-fluid -->
+				</div> <!-- End of navbar navbar-inverse -->
+			</nav>
 
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class"navbar-header">
-					<a class="navbar-brand" href="{% url 'casestudy:index' %}">Celeste Carter</a>
-				</div>
-				<div>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Skills</a></li>
-						<li><a href="#">Goals</a></li>
-						<li><a href="#">Education</a></li>
-						<li><a href="#">Personal Interests</a></li>
-						<li><a href="#">Other</a></li>
-					</ul>
-				</div>
-				</div> <!-- container-fluid -->
-			</div>
-		</nav>
+		<div class="wrapper container">
 
-	{% block 'content' %}
-		<h1>Welcome to Celeste's Portfolio Site</h1>
-        <p>We hope you enjoy some nice quality time with us today.</p>
-	{% endblock %}
+			{% block 'content' %}
+				<h1>Welcome to Celeste's Portfolio Site</h1>
+				<p>Feel free to browse around!</p>
+			{% endblock %}
+
+		</div> <!-- End of wrapper container -->
+
+	<footer>
+		<div class="container">
+			<p>Copyright &copy; Celeste Carter's Portfolio</p>
+		</div>
+	</footer>
+
 	</body>
 </html>

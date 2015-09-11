@@ -1,66 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-	{% extends 'base.html' %}
-	{% load thumbnail %}
+{% extends 'base.html' %}
+{% load thumbnail %}
 
-	<head>
-		<title>Celeste's Portfolio</title>
+{% block 'title' %} Celeste's {{ casestudy.name }} {% endblock %}
 
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+{% block 'content' %}
+	<div class="container details">
+		<h1>{{ casestudy.name }}</h1>
+		<h2>{{ casestudy.description }}</h2>
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-		<!-- Custom css -->
-		{% load staticfiles %}
-		<link rel="stylesheet" type="text/css" href="{% static 'casestudy/styles.css' %}" />
-
-	</head>
-
-	<body>
-
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class"navbar-header">
-					<a class="navbar-brand" href="{% url 'casestudy:index' %}">Celeste Carter</a>
-				</div>
-				<div>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Skills</a></li>
-						<li><a href="#">Goals</a></li>
-						<li><a href="#">Education</a></li>
-						<li><a href="#">Personal Interests</a></li>
-						<li><a href="#">Other</a></li>
-					</ul>
-				</div>
-				</div> <!-- container-fluid -->
+		{% if casestudy.item_set %}
+			{% for item in casestudy.item_set.all %}
+			<div id="{{ item.id }}">
+				{% thumbnail item.image "300x300" crop="center" as im  %}
+					{% if item.id|divisibleby:2 == 0 %}
+					<img src="{{ im.url }}" class="blueBox">
+					{% else %}
+					<img src="{{ im.url }}" class="purpleBox">
+					{% endif %}
+				{% endthumbnail %}
+				<h3>{{ item.title}}</h3>
+				<p>{{ item.description }}</p>
 			</div>
-		</nav>
+			{% endfor %}
 
-	{% block 'content' %}
-		<div class="container details">
-			<h1>{{ casestudy.name }}</h1>
-
-			{% if casestudy.item_set %}
-
-				{% for item in casestudy.item_set.all %}
-
-				<div id="{{ item.id }}">
-					<h2>{{ item.title}}</h2>
-					{% thumbnail item.image "300x300" crop="center" as im  %}
-					<img src="{{ im.url }}">
-					{% endthumbnail %}
-					<p>{{ item.description }}</p>
-				</div>
-
-				{% endfor %}
-
-			{% endif %}
-		</div> <!-- End of Container -->
-	{% endblock %}
-	</body>
-</html>
+		{% endif %}
+	</div> <!-- End of Container -->
+{% endblock %}
