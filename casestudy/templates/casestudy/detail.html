@@ -1,15 +1,28 @@
-<h1>{{ casestudy.name }}</h1>
+{% extends 'base.html' %}
+{% load thumbnail %}
 
-{% if casestudy.item_set %}
+{% block 'title' %} Celeste's {{ casestudy.name }} {% endblock %}
 
-	{% for item in casestudy.item_set.all %}
+{% block 'content' %}
+	<div class="container details">
+		<h1>{{ casestudy.name }}</h1>
+		<h2>{{ casestudy.description }}</h2>
 
-	<div id="{{ item.id }}">
-		<h2>{{ item.title}}</h2>
-		<img src="/media/{{ item.image }}">
-		<p>{{ item.description }}</p>
-	</div>
+		{% if casestudy.item_set %}
+			{% for item in casestudy.item_set.all %}
+			<div id="{{ item.id }}">
+				{% thumbnail item.image "300x300" crop="center" as im  %}
+					{% if item.id|divisibleby:2 == 0 %}
+					<img src="{{ im.url }}" class="blueBox">
+					{% else %}
+					<img src="{{ im.url }}" class="purpleBox">
+					{% endif %}
+				{% endthumbnail %}
+				<h3>{{ item.title}}</h3>
+				<p>{{ item.description }}</p>
+			</div>
+			{% endfor %}
 
-	{% endfor %}
-
-{% endif %}
+		{% endif %}
+	</div> <!-- End of Container -->
+{% endblock %}

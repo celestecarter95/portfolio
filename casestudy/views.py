@@ -12,4 +12,4 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
 	model = CaseStudy
-	tempate_name = 'caststudy/detail.html'
+	template_name = 'casestudy/detail.html'
